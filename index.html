@@ -822,7 +822,7 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <p><code>numberBits</code> is the number of leading bits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
 <p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
-	<span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">timestamp</span> <span class="pl-c1">=</span> <span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">//unix time</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
@@ -876,9 +876,9 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <p>You saw how, as the number of leading zeroes increases, the numbers of guesses you have to make increases too. Remember, you have to do this for each block! By increasing the requirement for the number of leading zeroes we can make it more and more time consuming to mine blockchain. Let's write a <em>function</em> that automatically checks different values of the <em>nonce</em> for us.</p>
 <p>Given a block (let's call it <code>theBlock</code> this time), check whether a certain value of the nonce starts with the correct number of leading zeroes.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
-	<span class="pl-en">checkNonce</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-	  <span class="pl-k">return</span> <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> &lt;= <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-c1">numberBits</span>
-	<span class="pl-kos">}</span>
+  <span class="pl-en">checkNonce</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">return</span> <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> &lt;= <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-c1">numberBits</span>
+  <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
 <h1>
 <a id="user-content-adding-functionality" class="anchor" href="#adding-functionality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding functionality</h1>
@@ -887,23 +887,23 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <p>We can use a <em>library</em> (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn <code>this</code> (the block) into a string. Next we hash that string.  We can find documentation explaining how to use the <code>crypto</code> library <a href="https://nodejs.org/api/crypto.html" rel="nofollow">here</a>. That shows us how to use the library and what functions it has available for us.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">crypto</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
-	<span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-		<span class="pl-k">const</span> <span class="pl-s1">blockString</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span>
+  <span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">const</span> <span class="pl-s1">blockString</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span>
         <span class="pl-k">const</span> <span class="pl-s1">hash</span> <span class="pl-c1">=</span> <span class="pl-s1">crypto</span><span class="pl-kos">.</span><span class="pl-en">createHash</span><span class="pl-kos">(</span><span class="pl-s">'sha256'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">update</span><span class="pl-kos">(</span><span class="pl-s1">blockString</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">digest</span><span class="pl-kos">(</span><span class="pl-s">'hex'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
         <span class="pl-k">return</span> <span class="pl-s1">hash</span>
-	<span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
 <h1>
 <a id="user-content-getting-down-to-business" class="anchor" href="#getting-down-to-business" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting down to business</h1>
 <h2>
 <a id="user-content-create-a-block-1" class="anchor" href="#create-a-block-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a block</h2>
-<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="1. Create a block" style="max-width:100%;"></a></p>
+<p><a href="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-1.jpg?raw=true%7D" target="_blank" rel="noopener noreferrer"><img src="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-1.jpg?raw=true%7D" alt="1. Create a block" style="max-width:100%;"></a></p>
 <h2>
 <a id="user-content-create-a-blockchain" class="anchor" href="#create-a-blockchain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a blockchain</h2>
-<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="2. Create a blockchain" style="max-width:100%;"></a></p>
+<p><a href="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-2.jpg?raw=true%7D" target="_blank" rel="noopener noreferrer"><img src="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-2.jpg?raw=true%7D" alt="2. Create a blockchain" style="max-width:100%;"></a></p>
 <h2>
 <a id="user-content-organize-our-project" class="anchor" href="#organize-our-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Organize our project</h2>
-<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="3. Organize our project" style="max-width:100%;"></a></p>
+<p><a href="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-3.jpg?raw=true%7D" target="_blank" rel="noopener noreferrer"><img src="/Users/daniel/Projects/blockchain-dev/Lessons/Lesson%201%20Your%20Own%20Blockchain/%7Bimages/yt-thumbnail-3.jpg?raw=true%7D" alt="3. Organize our project" style="max-width:100%;"></a></p>
 <p>@TODO:</p>
 <p>How to check validity - explain how hashes link chains and are tamper-proof</p>
 </article></body></html>
