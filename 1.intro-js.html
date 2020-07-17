@@ -1,0 +1,909 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+  font-family: octicons-anchor;
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+    color:#333;
+    background:#fff;
+}
+
+body .markdown-body {
+    padding: 45px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background-color: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body input {
+  font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body .octicon {
+  font: normal normal normal 16px/1 octicons-anchor;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.markdown-body .anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h1 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 .anchor {
+  line-height: 1;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h3 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h4 .anchor {
+  line-height: 1.2;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h5 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body h6 .anchor {
+  line-height: 1.1;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .pl-c {
+  color: #969896;
+}
+
+.markdown-body .pl-c1,
+.markdown-body .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.markdown-body .pl-e,
+.markdown-body .pl-en {
+  color: #795da3;
+}
+
+.markdown-body .pl-s .pl-s1,
+.markdown-body .pl-smi {
+  color: #333;
+}
+
+.markdown-body .pl-ent {
+  color: #63a35c;
+}
+
+.markdown-body .pl-k {
+  color: #a71d5d;
+}
+
+.markdown-body .pl-pds,
+.markdown-body .pl-s,
+.markdown-body .pl-s .pl-pse .pl-s1,
+.markdown-body .pl-sr,
+.markdown-body .pl-sr .pl-cce,
+.markdown-body .pl-sr .pl-sra,
+.markdown-body .pl-sr .pl-sre {
+  color: #183691;
+}
+
+.markdown-body .pl-v {
+  color: #ed6a43;
+}
+
+.markdown-body .pl-id {
+  color: #b52a1d;
+}
+
+.markdown-body .pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.markdown-body .pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.markdown-body .pl-ml {
+  color: #693a17;
+}
+
+.markdown-body .pl-mh,
+.markdown-body .pl-mh .pl-en,
+.markdown-body .pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mq {
+  color: #008080;
+}
+
+.markdown-body .pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.markdown-body .pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.markdown-body .pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.markdown-body .pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.markdown-body .pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.markdown-body .pl-mo {
+  color: #1d3e81;
+}
+
+.markdown-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.markdown-body .plan-price-unit {
+  color: #767676;
+  font-weight: normal;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 0.35em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.markdown-body .plan-choice {
+  padding: 15px;
+  padding-left: 40px;
+  display: block;
+  border: 1px solid #e0e0e0;
+  position: relative;
+  font-weight: normal;
+  background-color: #fafafa;
+}
+
+.markdown-body .plan-choice.open {
+  background-color: #fff;
+}
+
+.markdown-body .plan-choice.open .plan-choice-seat-breakdown {
+  display: block;
+}
+
+.markdown-body .plan-choice-free {
+  border-radius: 3px 3px 0 0;
+}
+
+.markdown-body .plan-choice-paid {
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+
+.markdown-body .plan-choice-radio {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+}
+
+.markdown-body .plan-choice-exp {
+  color: #999;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.markdown-body .plan-choice-seat-breakdown {
+  margin-top: 10px;
+  display: none;
+}
+
+.markdown-body :checked+.radio-label {
+  z-index: 1;
+  position: relative;
+  border-color: #4078c0;
+}
+
+@media print {
+  body .markdown-body {
+    padding: 0;
+    border: none;
+  }
+}
+</style><title>1.intro-js</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-intro" class="anchor" href="#intro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intro</h1>
+<h2>
+<a id="user-content-programming-languages" class="anchor" href="#programming-languages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programming Languages</h2>
+<p>Programming languages can seem very different from each other, just like spoken languages such as English or Dutch. But almost all are capable of writing any program or expressing any idea.</p>
+<p>Programming languages differ in the rules that tell you how to write a program, just like different spoken languages have different rules for how you make a sentence. Some programming languages are similar to each other, just like Spanish and Italian are similar. Some have very few rules in common, just like English and Chinese. But these programming languages are all able to represent the ideas in your program.</p>
+<p>The first language we will use is called <em>Go</em>. In later courses we will introduce other programming languages. For example, <em>Solidity</em> is a language for writing <em>smart contracts</em> on the <em>Ethereum</em> blockchain. We will introduce different rules for writing your code, but the basic ideas you learn will stay the same across all languages.</p>
+<h2>
+<a id="user-content-go" class="anchor" href="#go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Go</h2>
+<p><em>Go</em> is a programming language from Google. It is both powerful, and easy to read and write. You don't need to know how to program. We will introduce Go bit by bit over the next chapters. We will use this programming language to build our blockchain.</p>
+<p>You will learn how to create <em>objects</em> in code which represent different things, such as a block on the blockchain. You will also learn how to create <em>functions</em>, which allow you to take actions in your code. Actions could be mining on the blockchain or calculating a hash.</p>
+<h2>
+<a id="user-content-the-blockchain" class="anchor" href="#the-blockchain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The blockchain</h2>
+<p>You are probably already familiar with the blockchain. We are going to go through the basic principles from the very beginning. Most of the terms we use you will have seen before.</p>
+<p>By the end, you will understand what makes blockchain technology unique.</p>
+<ul>
+<li>You will understand what the different components of a blockchain are and how they fit together.</li>
+<li>You will understand how hashing works.</li>
+<li>You will understand how hashing works.</li>
+<li>You will understand how different parameters, such as the difficulty level and the timestamp window, affect the security and performance of a blockchain.</li>
+</ul>
+<p>And you will know how to write your own blockchain from scratch.</p>
+<h1>
+<a id="user-content-objects" class="anchor" href="#objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objects</h1>
+<h2>
+<a id="user-content-creating-a-block-in-go" class="anchor" href="#creating-a-block-in-go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a block in Go</h2>
+<p>This is how you create an <em>object</em>. In Go the technical name for this particular type of object is a "struct". We called our new type of object "Thing”.</p>
+<p>Try changing the object so it's called a "Block".</p>
+<div class="highlight highlight-source-go"><pre><span class="pl-k">type</span> <span class="pl-smi">Thing</span> <span class="pl-k">struct</span> {}</pre></div>
+<h2>
+<a id="user-content-adding-fields-to-our-block" class="anchor" href="#adding-fields-to-our-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding fields to our block</h2>
+<p>When you create an object you can add <em>fields</em> to represent the different things an object contains. Each field has a <em>name</em> as well as a <em>type</em>. We have a block here which contains an object with the name "random" and the type "string". Try changing the name to "data".</p>
+<div class="highlight highlight-source-go"><pre><span class="pl-k">type</span> <span class="pl-smi">Block</span> <span class="pl-k">struct</span> {
+    <span class="pl-c1">random</span>      <span class="pl-smi">string</span>
+}</pre></div>
+<h1>
+<a id="user-content-hashing" class="anchor" href="#hashing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hashing</h1>
+<h2>
+<a id="user-content-the-sha256-hash" class="anchor" href="#the-sha256-hash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The SHA256 hash</h2>
+<p>Bitcoin uses a version of a hash called SHA256.
+On the right, you can put in different inputs and see their SHA256 hash.</p>
+<p>You will always get the same hash output for the same input. Go ahead and try it with:</p>
+<pre><code>`Hello world`   
+</code></pre>
+<p>Did you get this output? The output text should turn green.</p>
+<pre><code>`64EC88CA00B26800000000000000000000000000000000000000000000000000`   
+</code></pre>
+<p>Make sure your capitalization is the same as the example input.</p>
+<h2>
+<a id="user-content-hashing-for-security" class="anchor" href="#hashing-for-security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hashing for security</h2>
+<p>Often when websites store your password, they store the hash of your password. When you log in, they take the password you send and hash it. If it matches the hash they have stored, then the password is correct. If someone steals the hash, there is no way to use it to guess your password.</p>
+<p>What if someone wants to break into your account. Can they guess the hash without knowing your password?</p>
+<p>We know that entering your password will always produce the same hash.</p>
+<p>On average, an attacker will have to guess around <code>10^36</code> hashes before they will guess correctly. That is a <code>1</code> with <code>36</code> zeroes following it.</p>
+<p>That is a big number, but computers can guess really fast. Are they fast enough?</p>
+<h2>
+<a id="user-content-snowden-uses-hashes" class="anchor" href="#snowden-uses-hashes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Snowden uses hashes</h2>
+<p>When Edward Snowden first contacted journalist Glenn Greenwald, he told him their conversation was probably being listened to. He asked Mr. Greenwald to use a form of encryption based on hashes, and said they should assume their attacker was capable of one trillion guesses per second.</p>
+<p>Of course, we know now that Snowden was talking about the NSA. So if they can guess one trillion times per second, how long would it take the NSA to guess an SHA256 hash?</p>
+<p>Let's do the math.</p>
+<h2>
+<a id="user-content-cracking-a-hash" class="anchor" href="#cracking-a-hash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cracking a hash</h2>
+<p>Figuring out our hash would take about <code>10^36</code> guessses. So a <code>1</code> with <code>36</code> zeroes after it.</p>
+<p>We assume our attacker is guessing at <code>1 trillion</code> times per second, which is <code>10^12</code>.</p>
+<p><code>10^36 guesses / 10^12 guesses per second = 10^24 seconds</code></p>
+<p>It would take our attacker <code>10^24</code> seconds to guess our hash. That is about <code>10^17</code> years.</p>
+<p>Our universe is only around <code>10^9</code> years old.</p>
+<p>So nobody can crack our SHA256 hash. That's good to know.</p>
+<h1>
+<a id="user-content-back-to-blocks" class="anchor" href="#back-to-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Back to blocks</h1>
+<h2>
+<a id="user-content-what-is-in-a-block" class="anchor" href="#what-is-in-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is in a block?</h2>
+<p>Each block will contain 5 items.</p>
+<ul>
+<li>timestamp</li>
+<li>number of leading zero bits</li>
+<li><em>nonce</em></li>
+<li>hash of previous block</li>
+<li>data</li>
+</ul>
+<h2>
+<a id="user-content-the-different-types-of-fields" class="anchor" href="#the-different-types-of-fields" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The different types of fields</h2>
+<p>Golang stores time as Unix time, the number of seconds elapsed since January 1, 1970 UTC. We are using UTC time, which means the time does not depend on where you are located. Go stores the time as a 64-bit value, so it can store the time for billions of years into the future.</p>
+<p>January 1, 2020 in Unix format is: <code>1577833200</code></p>
+<h2>
+<a id="user-content-our-block-object" class="anchor" href="#our-block-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Our block object</h2>
+<p>This is the structure of a block. In the next sections we will explain each part of the block in more detail. Some parts of the block should already look familiar.</p>
+<p>You've seen what a hash looks like in earlier sections. <code>previousHash</code> is the hash of the previous block in the chain. This gives us a unique, unbreakable link between this block and the one before it. We will spend more time discussing that later; it's important to the structure of the blockchain.</p>
+<p><code>nonce</code> stands for <code>Number used ONCE</code>; we will explore the purpose of the nonce in the section <a href="#mining-blocks">mining blocks</a></p>
+<p><code>numberBits</code> is the number of leading bits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
+<p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+	<span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">timestamp</span> <span class="pl-c1">=</span> <span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">//unix time</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h1>
+<a id="user-content-functions" class="anchor" href="#functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functions</h1>
+<h3>
+<a id="user-content-define-a-function" class="anchor" href="#define-a-function" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a function</h3>
+<p>Now we know how to create a <em>thing</em>, our “Block” object. What if you want to do something? Functions are used to perform an action. Here we define a function that says “Hello World!” It uses an existing function (<code>fmt.Println()</code>) to <em>print</em> the output onto your screen.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-en">sayHello</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">“Hello</span> <span class="pl-v">World”</span><span class="pl-kos">)</span>
+<span class="pl-kos">}</span></pre></div>
+<h3>
+<a id="user-content-create-a-block" class="anchor" href="#create-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a block</h3>
+<p>How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We add “Block” after <code>newBlock()</code> to let everyone know we will be returning a new Block. We <em>initialize</em> a new Block called <code>ourBlock</code> inside the function definition. Initialization is what it’s called when we create a new object.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-en">newBlock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-v">Block</span><span class="pl-kos">{</span><span class="pl-kos">}</span>
+  <span class="pl-k">return</span> <span class="pl-s1">ourBlock</span>
+<span class="pl-kos">}</span></pre></div>
+<h3>
+<a id="user-content-edit-a-block" class="anchor" href="#edit-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit a block</h3>
+<p>How about a function that changes our existing block? First we define the function name. This function does an operation on an existing object, so we define the existing object before the function name. Then we can make changes to the object. When we want to use this function we can write <code>ourBlock.changeNonce(10)</code> to change the nonce of <code>ourBlock</code> to 10.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+    <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">timestamp</span> <span class="pl-c1">=</span> <span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">//unix time</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-en">changeNonce</span><span class="pl-kos">(</span><span class="pl-s1">newNonce</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-s1">newNonce</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h3>
+<a id="user-content-mining-blocks" class="anchor" href="#mining-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mining blocks</h3>
+<p>We saw before that each block contains a <em>nonce</em>, or Number used ONCE. When we hash the block, we end up with a random looking output. By changing the <em>nonce</em>, but nothing else, we can change what the hash looks like. Try it yourself.</p>
+<p>Change the nonce to 10:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> <span class="pl-s1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-c1">1593849699</span>
+<span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-v">Block</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span>
+<span class="pl-s1">ourBlock</span><span class="pl-kos">.</span><span class="pl-en">changeNonce</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span>
+<span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">ourBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span></pre></div>
+<p>Did you get this output?</p>
+<p><code>C668C0F599C1A6EC15EDC401A69E4A1068AD1E94C576565DEBC0E59F0F3EF1E0</code></p>
+<h3>
+<a id="user-content-calculating-hashes" class="anchor" href="#calculating-hashes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calculating hashes</h3>
+<p>If we keep changing the <em>nonce</em> eventually we can get an output that starts with <code>0</code>. However, it takes us a number of tries to find a value that gives us that hash output. Each try takes a certain amount of time to compute. What if we want to find an output that starts with <code>00</code>? That takes us twice as long. If we want it to start with <code>000</code> now we need to try three times as many guesses. If we increase the numbers of zeroes at the beginning we can increase the difficulty of finding a correct nonce. You just mined your first block by hand!</p>
+<h3>
+<a id="user-content-increasing-the-difficulty" class="anchor" href="#increasing-the-difficulty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Increasing the difficulty</h3>
+<p>You saw how, as the number of leading zeroes increases, the numbers of guesses you have to make increases too. Remember, you have to do this for each block! By increasing the requirement for the number of leading zeroes we can make it more and more time consuming to mine blockchain. Let's write a <em>function</em> that automatically checks different values of the <em>nonce</em> for us.</p>
+<p>Given a block (let's call it <code>theBlock</code> this time), check whether a certain value of the nonce starts with the correct number of leading zeroes.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+	<span class="pl-en">checkNonce</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+	  <span class="pl-k">return</span> <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> &lt;= <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-c1">numberBits</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h1>
+<a id="user-content-adding-functionality" class="anchor" href="#adding-functionality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding functionality</h1>
+<h3>
+<a id="user-content-compute-our-hash" class="anchor" href="#compute-our-hash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compute our hash</h3>
+<p>We can use a <em>library</em> (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn <code>this</code> (the block) into a string. Next we hash that string.  We can find documentation explaining how to use the <code>crypto</code> library <a href="https://nodejs.org/api/crypto.html" rel="nofollow">here</a>. That shows us how to use the library and what functions it has available for us.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">crypto</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+	<span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+		<span class="pl-k">const</span> <span class="pl-s1">blockString</span> <span class="pl-c1">=</span> <span class="pl-c1">JSON</span><span class="pl-kos">.</span><span class="pl-en">stringify</span><span class="pl-kos">(</span><span class="pl-smi">this</span><span class="pl-kos">)</span>
+        <span class="pl-k">const</span> <span class="pl-s1">hash</span> <span class="pl-c1">=</span> <span class="pl-s1">crypto</span><span class="pl-kos">.</span><span class="pl-en">createHash</span><span class="pl-kos">(</span><span class="pl-s">'sha256'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">update</span><span class="pl-kos">(</span><span class="pl-s1">blockString</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">digest</span><span class="pl-kos">(</span><span class="pl-s">'hex'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+        <span class="pl-k">return</span> <span class="pl-s1">hash</span>
+	<span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<h1>
+<a id="user-content-getting-down-to-business" class="anchor" href="#getting-down-to-business" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting down to business</h1>
+<h2>
+<a id="user-content-create-a-block-1" class="anchor" href="#create-a-block-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a block</h2>
+<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="1. Create a block" style="max-width:100%;"></a></p>
+<h2>
+<a id="user-content-create-a-blockchain" class="anchor" href="#create-a-blockchain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a blockchain</h2>
+<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="2. Create a blockchain" style="max-width:100%;"></a></p>
+<h2>
+<a id="user-content-organize-our-project" class="anchor" href="#organize-our-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Organize our project</h2>
+<p><a href="" target="_blank" rel="noopener noreferrer"><img alt="3. Organize our project" style="max-width:100%;"></a></p>
+<p>@TODO:</p>
+<p>How to check validity - explain how hashes link chains and are tamper-proof</p>
+</article></body></html>
