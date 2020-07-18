@@ -738,9 +738,9 @@ pre {
 <p>Programming languages differ in the rules that tell you how to write a program, just like different spoken languages have different rules for how you make a sentence. Some programming languages are similar to each other, just like Spanish and Italian are similar. Some have very few rules in common, just like English and Chinese. But these programming languages are all able to represent the ideas in your program.</p>
 <p>The first language we will use is called <em>Go</em>. In later courses we will introduce other programming languages. For example, <em>Solidity</em> is a language for writing <em>smart contracts</em> on the <em>Ethereum</em> blockchain. We will introduce different rules for writing your code, but the basic ideas you learn will stay the same across all languages.</p>
 <h2>
-<a id="user-content-go" class="anchor" href="#go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Go</h2>
-<p><em>Go</em> is a programming language from Google. It is both powerful, and easy to read and write. You don't need to know how to program. We will introduce Go bit by bit over the next chapters. We will use this programming language to build our blockchain.</p>
-<p>You will learn how to create <em>objects</em> in code which represent different things, such as a block on the blockchain. You will also learn how to create <em>functions</em>, which allow you to take actions in your code. Actions could be mining on the blockchain or calculating a hash.</p>
+<a id="user-content-javascript" class="anchor" href="#javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javascript</h2>
+<p>We will use <em>Javascript</em> as our programming language. Probably you have already heard of Javascript before. It is both powerful, and easy to write. You don't need to know how to program. We will introduce Javascript bit by bit over the next chapters, as we use it to build our blockchain.</p>
+<p>You will learn how to create <em>classes</em> in code which represent different things, such as a block on the blockchain. You will also learn how to create <em>functions</em>, which allow you to take actions in your code. Actions could be mining on the blockchain or calculating a hash.</p>
 <h2>
 <a id="user-content-the-blockchain" class="anchor" href="#the-blockchain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The blockchain</h2>
 <p>You are probably already familiar with the blockchain. We are going to go through the basic principles from the very beginning. Most of the terms we use you will have seen before.</p>
@@ -756,26 +756,28 @@ pre {
 <a id="user-content-objects" class="anchor" href="#objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objects</h1>
 <h2>
 <a id="user-content-creating-a-block-in-go" class="anchor" href="#creating-a-block-in-go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a block in Go</h2>
-<p>This is how you create an <em>object</em>. In Go the technical name for this particular type of object is a "struct". We called our new type of object "Thing”.</p>
+<p>This is how you create an <em>object</em>. In Javascript the technical name for this particular type of object is a "class". We called our new type of object "Thing”.</p>
 <p>Try changing the object so it's called a "Block".</p>
-<div class="highlight highlight-source-go"><pre><span class="pl-k">type</span> <span class="pl-smi">Thing</span> <span class="pl-k">struct</span> {}</pre></div>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Thing</span> <span class="pl-kos">{</span><span class="pl-kos">}</span></pre></div>
 <h2>
 <a id="user-content-adding-fields-to-our-block" class="anchor" href="#adding-fields-to-our-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding fields to our block</h2>
 <p>When you create an object you can add <em>fields</em> to represent the different things an object contains. Each field has a <em>name</em> as well as a <em>type</em>. We have a block here which contains an object with the name "random" and the type "string". Try changing the name to "data".</p>
-<div class="highlight highlight-source-go"><pre><span class="pl-k">type</span> <span class="pl-smi">Block</span> <span class="pl-k">struct</span> {
-    <span class="pl-c1">random</span>      <span class="pl-smi">string</span>
-}</pre></div>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">random</span> <span class="pl-c1">=</span> <span class="pl-s">""</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <h1>
 <a id="user-content-hashing" class="anchor" href="#hashing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hashing</h1>
 <h2>
 <a id="user-content-the-sha256-hash" class="anchor" href="#the-sha256-hash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The SHA256 hash</h2>
 <p>Bitcoin uses a version of a hash called SHA256.
-On the right, you can put in different inputs and see their SHA256 hash.</p>
+On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">this website</a>, you can put in different inputs and see their SHA256 hash.</p>
 <p>You will always get the same hash output for the same input. Go ahead and try it with:</p>
 <pre><code>`Hello world`   
 </code></pre>
-<p>Did you get this output? The output text should turn green.</p>
-<pre><code>`64EC88CA00B26800000000000000000000000000000000000000000000000000`   
+<p>Did you get this output?</p>
+<pre><code>`64ec88ca00b268e5ba1a35678a1b5316d212f4f366b2477232534a8aeca37f3c`   
 </code></pre>
 <p>Make sure your capitalization is the same as the example input.</p>
 <h2>
@@ -841,7 +843,7 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <a id="user-content-create-a-block" class="anchor" href="#create-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a block</h3>
 <p>How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We add “Block” after <code>newBlock()</code> to let everyone know we will be returning a new Block. We <em>initialize</em> a new Block called <code>ourBlock</code> inside the function definition. Initialization is what it’s called when we create a new object.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-en">newBlock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-  <span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-v">Block</span><span class="pl-kos">{</span><span class="pl-kos">}</span>
+  <span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Block</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
   <span class="pl-k">return</span> <span class="pl-s1">ourBlock</span>
 <span class="pl-kos">}</span></pre></div>
 <h3>
@@ -860,17 +862,15 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <span class="pl-kos">}</span></pre></div>
 <h3>
 <a id="user-content-mining-blocks" class="anchor" href="#mining-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mining blocks</h3>
-<p>We saw before that each block contains a <em>nonce</em>, or Number used ONCE. When we hash the block, we end up with a random looking output. By changing the <em>nonce</em>, but nothing else, we can change what the hash looks like. Try it yourself.</p>
+<p>We saw before that each block contains a <em>nonce</em>, or Number used ONCE. When we hash the block, we end up with a random looking output. By changing the <em>nonce</em>, but nothing else, we can change what the hash looks like. In code it would look like this.</p>
 <p>Change the nonce to 10:</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">let</span> <span class="pl-s1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-c1">1593849699</span>
 <span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-v">Block</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span>
 <span class="pl-s1">ourBlock</span><span class="pl-kos">.</span><span class="pl-en">changeNonce</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span>
 <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">ourBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span></pre></div>
-<p>Did you get this output?</p>
-<p><code>C668C0F599C1A6EC15EDC401A69E4A1068AD1E94C576565DEBC0E59F0F3EF1E0</code></p>
 <h3>
 <a id="user-content-calculating-hashes" class="anchor" href="#calculating-hashes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Calculating hashes</h3>
-<p>If we keep changing the <em>nonce</em> eventually we can get an output that starts with <code>0</code>. However, it takes us a number of tries to find a value that gives us that hash output. Each try takes a certain amount of time to compute. What if we want to find an output that starts with <code>00</code>? That takes us twice as long. If we want it to start with <code>000</code> now we need to try three times as many guesses. If we increase the numbers of zeroes at the beginning we can increase the difficulty of finding a correct nonce. You just mined your first block by hand!</p>
+<p>If we keep changing the <em>nonce</em> eventually we can get an output that starts with <code>0</code>. However, it takes us a number of tries to find a value that gives us that hash output. Each try takes a certain amount of time to compute. What if we want to find an output that starts with <code>00</code>? That takes us twice as long. If we want it to start with <code>000</code> now we need to try three times as many guesses. If we increase the numbers of zeroes at the beginning we can increase the difficulty of finding a correct nonce. That's how you mine a block!</p>
 <h3>
 <a id="user-content-increasing-the-difficulty" class="anchor" href="#increasing-the-difficulty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Increasing the difficulty</h3>
 <p>You saw how, as the number of leading zeroes increases, the numbers of guesses you have to make increases too. Remember, you have to do this for each block! By increasing the requirement for the number of leading zeroes we can make it more and more time consuming to mine blockchain. Let's write a <em>function</em> that automatically checks different values of the <em>nonce</em> for us.</p>
@@ -884,7 +884,7 @@ On the right, you can put in different inputs and see their SHA256 hash.</p>
 <a id="user-content-adding-functionality" class="anchor" href="#adding-functionality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding functionality</h1>
 <h3>
 <a id="user-content-compute-our-hash" class="anchor" href="#compute-our-hash" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compute our hash</h3>
-<p>We can use a <em>library</em> (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn <code>this</code> (the block) into a string. Next we hash that string.  We can find documentation explaining how to use the <code>crypto</code> library <a href="https://nodejs.org/api/crypto.html" rel="nofollow">here</a>. That shows us how to use the library and what functions it has available for us.</p>
+<p>We can use a <em>library</em> (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn <code>this</code> (the block) into a string. Next we hash that string.  We can find documentation explaining how to use the <code>crypto</code> library <a href="https://nodejs.org/api/crypto.html" rel="nofollow">here</a>. That shows us how to use the library and what functions it has available for us. We'll explore in further detail in the next section.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">crypto</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
 <span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
