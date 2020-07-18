@@ -805,7 +805,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p>Each block will contain 5 items.</p>
 <ul>
 <li>timestamp</li>
-<li>number of leading zero bits</li>
+<li>number of leading zero digits</li>
 <li><em>nonce</em></li>
 <li>hash of previous block</li>
 <li>data</li>
@@ -819,12 +819,13 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p>This is the structure of a block. In the next sections we will explain each part of the block in more detail. Some parts of the block should already look familiar.</p>
 <p>You've seen what a hash looks like in earlier sections. <code>previousHash</code> is the hash of the previous block in the chain. This gives us a unique, unbreakable link between this block and the one before it. We will spend more time discussing that later; it's important to the structure of the blockchain.</p>
 <p><code>nonce</code> stands for <code>Number used ONCE</code>; we will explore the purpose of the nonce in the section <a href="#mining-blocks">mining blocks</a></p>
-<p><code>numberBits</code> is the number of leading bits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
+<p><code>difficulty</code> is the number of leading digits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
 <p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a></p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">timestamp</span> <span class="pl-c1">=</span> <span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">//unix time</span>
+        <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">difficulty</span> <span class="pl-c1">=</span> <span class="pl-c1">2</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">data</span> <span class="pl-c1">=</span> <span class="pl-kos">[</span><span class="pl-kos">]</span>
     <span class="pl-kos">}</span>
@@ -872,10 +873,10 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <h3>
 <a id="user-content-increasing-the-difficulty" class="anchor" href="#increasing-the-difficulty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Increasing the difficulty</h3>
 <p>You saw how, as the number of leading zeroes increases, the numbers of guesses you have to make increases too. Remember, you have to do this for each block! By increasing the requirement for the number of leading zeroes we can make it more and more time consuming to mine blockchain. Let's write a <em>function</em> that automatically checks different values of the <em>nonce</em> for us.</p>
-<p>Given a block (let's call it <code>theBlock</code> this time), check whether a certain value of the nonce starts with the correct number of leading zeroes.</p>
+<p>Check whether a certain value of the nonce starts with the correct number of leading zeroes.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-en">checkNonce</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-k">return</span> <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> &lt;= <span class="pl-s1">theBlock</span><span class="pl-kos">.</span><span class="pl-c1">numberBits</span>
+    <span class="pl-k">return</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span> &lt;= <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">difficulty</span>
   <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
 <h1>

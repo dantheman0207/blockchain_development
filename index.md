@@ -97,7 +97,7 @@ So nobody can crack our SHA256 hash. That's good to know.
 ## What is in a block?
 Each block will contain 5 items.
  - timestamp
- - number of leading zero bits
+ - number of leading zero digits
  - *nonce*
  - hash of previous block
  - data
@@ -114,7 +114,7 @@ You've seen what a hash looks like in earlier sections. `previousHash` is the ha
 
 `nonce` stands for `Number used ONCE`; we will explore the purpose of the nonce in the section [mining blocks](#mining-blocks)
 
- `numberBits` is the number of leading bits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section [calculating hashes](#calculating-hashs)
+ `difficulty` is the number of leading digits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section [calculating hashes](#calculating-hashs)
 
  `data` represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
@@ -124,6 +124,7 @@ class Block {
   constructor(previousHash) {
         this.previousHash = previousHash
         this.timestamp = Date.now() //unix time
+        this.difficulty = 2
         this.nonce = 0
         this.data = []
     }
@@ -185,12 +186,12 @@ If we keep changing the *nonce* eventually we can get an output that starts with
 ### Increasing the difficulty
 You saw how, as the number of leading zeroes increases, the numbers of guesses you have to make increases too. Remember, you have to do this for each block! By increasing the requirement for the number of leading zeroes we can make it more and more time consuming to mine blockchain. Let's write a *function* that automatically checks different values of the *nonce* for us.
 
-Given a block (let's call it `theBlock` this time), check whether a certain value of the nonce starts with the correct number of leading zeroes.
+Check whether a certain value of the nonce starts with the correct number of leading zeroes.
 
 ```Javascript
 class Block {
   checkNonce() {
-    return theBlock.hash() <= theBlock.numberBits
+    return this.hash() <= this.difficulty
   }
 }
 ```
