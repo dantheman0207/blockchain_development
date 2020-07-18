@@ -254,8 +254,12 @@ We need to add a function, `addBlock` to our blockchain. We will do this in the 
 Before we can add a block, we have to check whether it is correctly linked. We do that inside of our `addBlock` function. In Javascript, when you want to check something you use an `if` statement. The `if` statement for checking whether our block is correctly linked is shown below:
 
 ```Javascript
-if(block.previousHash === this.getLastBlock().hash()) {
-
+class Blockchain {
+  addBlock(block) {
+    if(block.previousHash === this.getLastBlock().hash()) {
+        // here is where we add the block to the blockchain
+    }
+  }
 }
 ```
 

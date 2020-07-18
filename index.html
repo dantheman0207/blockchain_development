@@ -933,8 +933,12 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 Then we will create a new block and link it to the hash of our genesis block.</p>
 <p>We need to add a function, <code>addBlock</code> to our blockchain. We will do this in the <code>blockchain.js</code> file.</p>
 <p>Before we can add a block, we have to check whether it is correctly linked. We do that inside of our <code>addBlock</code> function. In Javascript, when you want to check something you use an <code>if</code> statement. The <code>if</code> statement for checking whether our block is correctly linked is shown below:</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">block</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">===</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getLastBlock</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Blockchain</span> <span class="pl-kos">{</span>
+  <span class="pl-en">addBlock</span><span class="pl-kos">(</span><span class="pl-s1">block</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">if</span><span class="pl-kos">(</span><span class="pl-s1">block</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">===</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">getLastBlock</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+        <span class="pl-c">// here is where we add the block to the blockchain</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
 <h5>
 <a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>@TODO:</h5>
