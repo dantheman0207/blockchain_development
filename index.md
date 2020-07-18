@@ -198,7 +198,7 @@ class Block {
 
 # Adding functionality
 ### Compute our hash
-We can use a *library* (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn `this` (the block) into a string using our [`JSON.stringify` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Next we hash that string.  We can find documentation explaining how to use the `crypto` library [here](https://nodejs.org/api/crypto.html). That shows us how to use the library and what functions it has available for us. We'll explore in further detail in the next section.
+We can use a *library* (code written by someone else) to compute the SHA256 hash. Here is an example below. First we import the library. Then we turn `this` (the block) into a string using our [`JSON.stringify`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) function. Next we hash that string.  We can find documentation explaining how to use the `crypto` library [here](https://nodejs.org/api/crypto.html). That shows us how to use the library and what functions it has available for us. We'll explore in further detail in the next section.
 
 ```Javascript
 const crypto = require('crypto');
