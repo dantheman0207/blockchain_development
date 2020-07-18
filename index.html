@@ -1,5 +1,4 @@
-<!DOCTYPE html><html>
-<head>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172937522-1"></script>
@@ -11,8 +10,7 @@
   gtag('config', 'UA-172937522-1');
 </script>
 
-
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>@font-face {
+<style>@font-face {
   font-family: octicons-anchor;
   src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
 }
@@ -908,7 +906,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <span class="pl-kos">}</span></pre></div>
 <h1>
 <a id="user-content-getting-down-to-business" class="anchor" href="#getting-down-to-business" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting down to business</h1>
-<p>Time to write some code yourself. In the next sections there will be screencasts showing you how to write each part of the blockchain. But first we need to install some software:</p>
+<p>Time to write some code yourself. In the next sections there will be screencasts showing you how to write each part of the blockchain. But first, we need to install some software.</p>
 <ol>
 <li><a href="https://code.visualstudio.com/Download" rel="nofollow">Install Visual Studio Code</a></li>
 <li><a href="https://nodejs.org/en/download/" rel="nofollow">Install NodeJS</a></li>
@@ -922,6 +920,12 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <h2>
 <a id="user-content-organize-our-project" class="anchor" href="#organize-our-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Organize our project</h2>
 <p><a href="https://www.youtube.com/watch?v=oMQjz3VAY-A" rel="nofollow">Screencast</a></p>
+<p>When we import a library we do it like this:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-s1">crypto</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'crypto'</span><span class="pl-kos">)</span></pre></div>
+<p>Sometimes we want to import our own code. When we organize our project we will put the <code>Block</code> class inside it's own <code>block.js</code> file. Then we <em>export</em> it like this:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-s1">modules</span><span class="pl-kos">.</span><span class="pl-c1">export</span><span class="pl-kos">.</span><span class="pl-c1">Block</span> <span class="pl-c1">=</span> <span class="pl-v">Block</span></pre></div>
+<p>When we want to use it inside our <code>blockchain.js</code> file we <em>import</em> it like this:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-kos">{</span> Block <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'./block'</span><span class="pl-kos">)</span></pre></div>
 <h5>
 <a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>@TODO:</h5>
 <p>How to check validity - explain how hashes link chains and are tamper-proof</p>

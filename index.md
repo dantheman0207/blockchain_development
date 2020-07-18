@@ -212,7 +212,7 @@ class Block {
 ```
 
 # Getting down to business
-Time to write some code yourself. In the next sections there will be screencasts showing you how to write each part of the blockchain. But first we need to install some software:
+Time to write some code yourself. In the next sections there will be screencasts showing you how to write each part of the blockchain. But first, we need to install some software.
 
 1. [Install Visual Studio Code](https://code.visualstudio.com/Download)
 2. [Install NodeJS](https://nodejs.org/en/download/)
@@ -225,6 +225,23 @@ Time to write some code yourself. In the next sections there will be screencasts
 
 ## Organize our project
 [Screencast](https://www.youtube.com/watch?v=oMQjz3VAY-A)
+
+When we import a library we do it like this:
+```Javascript
+const crypto = require('crypto')
+```
+
+Sometimes we want to import our own code. When we organize our project we will put the `Block` class inside it's own `block.js` file. Then we *export* it like this:
+
+```Javascript
+modules.export.Block = Block
+```
+
+When we want to use it inside our `blockchain.js` file we *import* it like this:
+
+```Javascript
+const { Block } = require('./block')
+```
 
 
 ##### @TODO: 
