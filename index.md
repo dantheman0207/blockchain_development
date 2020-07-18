@@ -5,7 +5,7 @@
 
  Programming languages differ in the rules that tell you how to write a program, just like different spoken languages have different rules for how you make a sentence. Some programming languages are similar to each other, just like Spanish and Italian are similar. Some have very few rules in common, just like English and Chinese. But these programming languages are all able to represent the ideas in your program. 
 
- The first language we will use is called *Go*. In later courses we will introduce other programming languages. For example, *Solidity* is a language for writing *smart contracts* on the *Ethereum* blockchain. We will introduce different rules for writing your code, but the basic ideas you learn will stay the same across all languages.
+ The first language we will use is called *Javascript*. In later courses we will introduce other programming languages. For example, *Solidity* is a language for writing *smart contracts* on the *Ethereum* blockchain. We will introduce different rules for writing your code, but the basic ideas you learn will stay the same across all languages.
 
 ## Javascript
  We will use *Javascript* as our programming language. Probably you have already heard of Javascript before. It is both powerful, and easy to write. You don't need to know how to program. We will introduce Javascript bit by bit over the next chapters, as we use it to build our blockchain.
@@ -103,7 +103,7 @@ Each block will contain 5 items.
  - data
 
 ## The different types of fields
-Golang stores time as Unix time, the number of seconds elapsed since January 1, 1970 UTC. We are using UTC time, which means the time does not depend on where you are located. Go stores the time as a 64-bit value, so it can store the time for billions of years into the future.
+We will store time as Unix time, the number of seconds elapsed since January 1, 1970 UTC. We are using UTC time, which means the time does not depend on where you are located. 
 
 January 1, 2020 in Unix format is: `1577833200`
 
