@@ -227,7 +227,7 @@ Time to write some code yourself. In the next sections there will be screencasts
 [Screencast](https://www.youtube.com/watch?v=oMQjz3VAY-A)
 
 
-# @TODO: 
+##### @TODO: 
 
 How to check validity - explain how hashes link chains and are tamper-proof
 
