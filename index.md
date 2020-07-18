@@ -121,6 +121,9 @@ You've seen what a hash looks like in earlier sections. `previousHash` is the ha
 
 ```Javascript
 class Block {
+  /*
+  *  This function *constructs* all the different parts of our block
+  */
   constructor(previousHash) {
         this.previousHash = previousHash
         this.timestamp = Date.now() //unix time
@@ -262,6 +265,27 @@ class Blockchain {
   }
 }
 ```
+
+## Mine blocks
+First we will add a *nonce* to our block.
+
+Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
+When we want to do something repeatedly in javascript we can use a `while` loop. The code below loops until the hash starts with '00'. Every time it loops it increments the nonce by one.
+
+```Javascript
+class Block {
+  mine() {
+    let leadingZeroes = '00'
+    let hashPrefix = this.hash().substring(0,2) // get first two numbers from hash string
+    while (leadingZeroes !== hashPrefix) {
+      this.nonce = this.nonce + 1
+      hashPrefix = this.hash().substring(0,2)
+    }
+  }
+}
+```
+
+Once we have our `mine` function set up, we can add a function to the `Blockchain` class that validates the chain by checking the link between each block and the previous block's hash.
 
 
 ##### @TODO: 

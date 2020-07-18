@@ -834,6 +834,9 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p><code>difficulty</code> is the number of leading digits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
 <p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a>.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+  <span class="pl-c">/*</span>
+<span class="pl-c">  *  This function *constructs* all the different parts of our block</span>
+<span class="pl-c">  */</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">timestamp</span> <span class="pl-c1">=</span> <span class="pl-v">Date</span><span class="pl-kos">.</span><span class="pl-en">now</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c">//unix time</span>
@@ -940,6 +943,22 @@ Then we will create a new block and link it to the hash of our genesis block.</p
     <span class="pl-kos">}</span>
   <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
+<h2>
+<a id="user-content-mine-blocks" class="anchor" href="#mine-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mine blocks</h2>
+<p>First we will add a <em>nonce</em> to our block.</p>
+<p>Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
+When we want to do something repeatedly in javascript we can use a <code>while</code> loop. The code below loops until the hash starts with '00'. Every time it loops it increments the nonce by one.</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+  <span class="pl-en">mine</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">let</span> <span class="pl-s1">leadingZeroes</span> <span class="pl-c1">=</span> <span class="pl-s">'00'</span>
+    <span class="pl-k">let</span> <span class="pl-s1">hashPrefix</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">substring</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-c">// get first two numbers from hash string</span>
+    <span class="pl-k">while</span> <span class="pl-kos">(</span><span class="pl-s1">leadingZeroes</span> !== <span class="pl-s1">hashPrefix</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">+</span> <span class="pl-c1">1</span>
+      <span class="pl-s1">hashPrefix</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">substring</span><span class="pl-kos">(</span><span class="pl-c1">0</span><span class="pl-kos">,</span><span class="pl-c1">2</span><span class="pl-kos">)</span>
+    <span class="pl-kos">}</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
+<p>Once we have our <code>mine</code> function set up, we can add a function to the <code>Blockchain</code> class that validates the chain by checking the link between each block and the previous block's hash.</p>
 <h5>
 <a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>@TODO:</h5>
 <p>How to check validity - explain how hashes link chains and are tamper-proof</p>
