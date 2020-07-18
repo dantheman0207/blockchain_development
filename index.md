@@ -243,6 +243,22 @@ When we want to use it inside our `blockchain.js` file we *import* it like this:
 const { Block } = require('./block')
 ```
 
+## Add a block to the chain
+[Screencast](https://youtu.be/acJQ6MQIqkQ)
+
+First we will add a function that calculates the hash of a block.
+Then we will create a new block and link it to the hash of our genesis block.
+
+We need to add a function, `addBlock` to our blockchain. We will do this in the `blockchain.js` file. 
+
+Before we can add a block, we have to check whether it is correctly linked. We do that inside of our `addBlock` function. In Javascript, when you want to check something you use an `if` statement. The `if` statement for checking whether our block is correctly linked is shown below:
+
+```Javascript
+if(block.previousHash === this.getLastBlock().hash()) {
+
+}
+```
+
 
 ##### @TODO: 
 
