@@ -175,7 +175,7 @@ Change the nonce to 10:
 ```Javascript
 let previousHash = 1593849699
 let ourBlock = Block(previousHash)
-ourBlock.changeNonce(1)
+ourBlock.changeNonce(10)
 console.log(ourBlock.hash())
 ```
 
