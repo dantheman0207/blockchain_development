@@ -116,7 +116,7 @@ You've seen what a hash looks like in earlier sections. `previousHash` is the ha
 
  `difficulty` is the number of leading digits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section [calculating hashes](#calculating-hashs)
 
- `data` represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+ `data` represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty [array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
 
 
 ```Javascript
@@ -142,7 +142,7 @@ sayHello() {
 ```
 
 ### Create a block
-How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We add “Block” after `newBlock()` to let everyone know we will be returning a new Block. We *initialize* a new Block called `ourBlock` inside the function definition. Initialization is what it’s called when we create a new object.
+How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We *initialize* a new Block called `ourBlock` inside the function definition. Initialization is what it’s called when we create a new object.
 
 ```Javascript
 newBlock() {

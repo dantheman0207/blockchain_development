@@ -820,7 +820,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p>You've seen what a hash looks like in earlier sections. <code>previousHash</code> is the hash of the previous block in the chain. This gives us a unique, unbreakable link between this block and the one before it. We will spend more time discussing that later; it's important to the structure of the blockchain.</p>
 <p><code>nonce</code> stands for <code>Number used ONCE</code>; we will explore the purpose of the nonce in the section <a href="#mining-blocks">mining blocks</a></p>
 <p><code>difficulty</code> is the number of leading digits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
-<p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a></p>
+<p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a>.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
@@ -840,7 +840,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <span class="pl-kos">}</span></pre></div>
 <h3>
 <a id="user-content-create-a-block" class="anchor" href="#create-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create a block</h3>
-<p>How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We add “Block” after <code>newBlock()</code> to let everyone know we will be returning a new Block. We <em>initialize</em> a new Block called <code>ourBlock</code> inside the function definition. Initialization is what it’s called when we create a new object.</p>
+<p>How about a function that really does something? Let’s write a function that creates a new Block object. First we define the function name. We <em>initialize</em> a new Block called <code>ourBlock</code> inside the function definition. Initialization is what it’s called when we create a new object.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-en">newBlock</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
   <span class="pl-k">let</span> <span class="pl-s1">ourBlock</span> <span class="pl-c1">=</span> <span class="pl-k">new</span> <span class="pl-v">Block</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
   <span class="pl-k">return</span> <span class="pl-s1">ourBlock</span>
