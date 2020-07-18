@@ -730,7 +730,7 @@ pre {
     border: none;
   }
 }
-</style><title>1.intro-js</title></head><body><article class="markdown-body"><h1>
+</style><title>index</title></head><body><article class="markdown-body"><h1>
 <a id="user-content-intro" class="anchor" href="#intro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Intro</h1>
 <h2>
 <a id="user-content-programming-languages" class="anchor" href="#programming-languages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Programming Languages</h2>
@@ -774,11 +774,9 @@ pre {
 <p>Bitcoin uses a version of a hash called SHA256.
 On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">this website</a>, you can put in different inputs and see their SHA256 hash.</p>
 <p>You will always get the same hash output for the same input. Go ahead and try it with:</p>
-<pre><code>`Hello world`   
-</code></pre>
+<p><code>Hello world</code></p>
 <p>Did you get this output?</p>
-<pre><code>`64ec88ca00b268e5ba1a35678a1b5316d212f4f366b2477232534a8aeca37f3c`   
-</code></pre>
+<p><code>64ec88ca00b268e5ba1a35678a1b5316d212f4f366b2477232534a8aeca37f3c</code></p>
 <p>Make sure your capitalization is the same as the example input.</p>
 <h2>
 <a id="user-content-hashing-for-security" class="anchor" href="#hashing-for-security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hashing for security</h2>
@@ -822,7 +820,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p>You've seen what a hash looks like in earlier sections. <code>previousHash</code> is the hash of the previous block in the chain. This gives us a unique, unbreakable link between this block and the one before it. We will spend more time discussing that later; it's important to the structure of the blockchain.</p>
 <p><code>nonce</code> stands for <code>Number used ONCE</code>; we will explore the purpose of the nonce in the section <a href="#mining-blocks">mining blocks</a></p>
 <p><code>numberBits</code> is the number of leading bits that must equal zero, and is a measure of the current difficulty of mining. We will discuss that in the section <a href="#calculating-hashs">calculating hashes</a></p>
-<p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like.</p>
+<p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a></p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
@@ -835,7 +833,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <a id="user-content-functions" class="anchor" href="#functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functions</h1>
 <h3>
 <a id="user-content-define-a-function" class="anchor" href="#define-a-function" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Define a function</h3>
-<p>Now we know how to create a <em>thing</em>, our “Block” object. What if you want to do something? Functions are used to perform an action. Here we define a function that says “Hello World!” It uses an existing function (<code>fmt.Println()</code>) to <em>print</em> the output onto your screen.</p>
+<p>Now we know how to create a <em>thing</em>, our “Block” object. What if you want to do something? Functions are used to perform an action. Here we define a function that says “Hello World!” It uses an existing function (<code>console.log()</code>) to <em>print</em> the output onto your screen.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-en">sayHello</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
   <span class="pl-smi">console</span><span class="pl-kos">.</span><span class="pl-en">log</span><span class="pl-kos">(</span><span class="pl-s1">“Hello</span> <span class="pl-v">World”</span><span class="pl-kos">)</span>
 <span class="pl-kos">}</span></pre></div>
