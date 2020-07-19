@@ -303,7 +303,7 @@ Once we finish mining a block we can hash it. The hash of a block never changes.
 
 This means we have a tamper-proof link between each block in our chain. In order to change one block you have to go back and recompute the hash of every block. Because of our mining function recomputing the whole chain will be very slow.
 
-We can loop through every block in our chain and check whether the field `previousHash` matches the hash of the previous block. This time we will use a `for` loop. The code for looping through the whole blockchain (starting at the *second* block) is shown below
+We can loop through every block in our chain and check whether the field `previousHash` matches the hash of the previous block. This time we will use a `for` loop. The code for looping through the whole blockchain (starting at the *second* block) is shown below:
 
 ```JavaScript
 class Blockchain() {
