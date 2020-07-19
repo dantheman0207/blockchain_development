@@ -122,7 +122,7 @@ You've seen what a hash looks like in earlier sections. `previousHash` is the ha
 ```Javascript
 class Block {
   /*
-  *  This function *constructs* all the different parts of our block
+  *  This function constructs all the different parts of our block
   */
   constructor(previousHash) {
         this.previousHash = previousHash
@@ -267,6 +267,8 @@ class Blockchain {
 ```
 
 ## Mine blocks
+[Screencast](https://youtu.be/YNyHPpdh0Kc)
+
 First we will add a *nonce* to our block.
 
 Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
@@ -285,12 +287,45 @@ class Block {
 }
 ```
 
-Once we have our `mine` function set up, we can add a function to the `Blockchain` class that validates the chain by checking the link between each block and the previous block's hash.
+
+In the screencast you will see me using google. I do this on purpose. Google should be the first resource you try. Just type in your question and add "javascript nodejs" to the end.
+
+When I run into problems or have a "bug", I use `console.log` to print the output of my program to the terminal. This lets you see what is happening inside of your program. It can be a really valuable way of finding out what's going wrong. In the screencast I found out that my hash wasn't changing when I changed the nonce. When I changed the way I created the hash, it started changing. Turns out I needed to use `JSON.stringify(this)` instead of `this.toString()`. This is just a different way of making a block into a string which can then be hashed.
+
+## Validate our chain
+[Screencast](https://youtu.be/7rri7ZgLLqw)
+
+First let's try changing the difficulty of our mining function. Every time we require an extra leading zero we (roughly) double the time it takes on average to mine a single block.
+
+Now we can add a function to the `Blockchain` class that validates the chain by checking the link between each block and the previous block's hash.
+
+Once we finish mining a block we can hash it. The hash of a block never changes. By including this hash in the next block we can link them together. Because the hash never changes this link will never change. If somebody tries to add an invalid block to our blockchain we will immediately know, since the hash won't match the previous block.
+
+This means we have a tamper-proof link between each block in our chain. In order to change one block you have to go back and recompute the hash of every block. Because of our mining function recomputing the whole chain will be very slow.
+
+We can loop through every block in our chain and check whether the field `previousHash` matches the hash of the previous block. This time we will use a `for` loop. The code for looping through the whole blockchain (starting at the *second* block) is shown below
+
+```Javascript
+class Blockchain() {
+  /*
+  * This method will loop through every block starting at the second block and 
+  * check whether the field `previousHash` equals the hash of the previous block
+  */
+  validateChain() {
+    for(let i = 1; i<this.blocks.length; i++) {
+      const previousBlock = this.blocks[i-1]
+      const block = this.blocks[i]
+      if (block.previousHash !== previousBlock.hash()) { // if these are *not* equal the chain is not valid
+        return false
+      }
+    }
+    return true // If we loop through all the blocks without returning false then the chain is valid
+  }
+}
+```
 
 
 ##### @TODO: 
-
-How to check validity - explain how hashes link chains and are tamper-proof
 
 
 

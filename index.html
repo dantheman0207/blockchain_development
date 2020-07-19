@@ -835,7 +835,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <p><code>data</code> represents the data we store in our blockchain. For Bitcoin, this would be transactions. For Ethereum, it might be data used by a smart contract. But we can use it to store anything we would like. For now, let's store an empty <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" rel="nofollow">array</a>.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
   <span class="pl-c">/*</span>
-<span class="pl-c">  *  This function *constructs* all the different parts of our block</span>
+<span class="pl-c">  *  This function constructs all the different parts of our block</span>
 <span class="pl-c">  */</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
@@ -945,6 +945,7 @@ Then we will create a new block and link it to the hash of our genesis block.</p
 <span class="pl-kos">}</span></pre></div>
 <h2>
 <a id="user-content-mine-blocks" class="anchor" href="#mine-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mine blocks</h2>
+<p><a href="https://youtu.be/YNyHPpdh0Kc" rel="nofollow">Screencast</a></p>
 <p>First we will add a <em>nonce</em> to our block.</p>
 <p>Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
 When we want to do something repeatedly in javascript we can use a <code>while</code> loop. The code below loops until the hash starts with '00'. Every time it loops it increments the nonce by one.</p>
@@ -958,8 +959,32 @@ When we want to do something repeatedly in javascript we can use a <code>while</
     <span class="pl-kos">}</span>
   <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
-<p>Once we have our <code>mine</code> function set up, we can add a function to the <code>Blockchain</code> class that validates the chain by checking the link between each block and the previous block's hash.</p>
+<p>In the screencast you will see me using google. I do this on purpose. Google should be the first resource you try. Just type in your question and add "javascript nodejs" to the end.</p>
+<p>When I run into problems or have a "bug", I use <code>console.log</code> to print the output of my program to the terminal. This lets you see what is happening inside of your program. It can be a really valuable way of finding out what's going wrong. In the screencast I found out that my hash wasn't changing when I changed the nonce. When I changed the way I created the hash, it started changing. Turns out I needed to use <code>JSON.stringify(this)</code> instead of <code>this.toString()</code>. This is just a different way of making a block into a string which can then be hashed.</p>
+<h2>
+<a id="user-content-validate-our-chain" class="anchor" href="#validate-our-chain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validate our chain</h2>
+<p><a href="https://youtu.be/7rri7ZgLLqw" rel="nofollow">Screencast</a></p>
+<p>First let's try changing the difficulty of our mining function. Every time we require an extra leading zero we (roughly) double the time it takes on average to mine a single block.</p>
+<p>Now we can add a function to the <code>Blockchain</code> class that validates the chain by checking the link between each block and the previous block's hash.</p>
+<p>Once we finish mining a block we can hash it. The hash of a block never changes. By including this hash in the next block we can link them together. Because the hash never changes this link will never change. If somebody tries to add an invalid block to our blockchain we will immediately know, since the hash won't match the previous block.</p>
+<p>This means we have a tamper-proof link between each block in our chain. In order to change one block you have to go back and recompute the hash of every block. Because of our mining function recomputing the whole chain will be very slow.</p>
+<p>We can loop through every block in our chain and check whether the field <code>previousHash</code> matches the hash of the previous block. This time we will use a <code>for</code> loop. The code for looping through the whole blockchain (starting at the <em>second</em> block) is shown below</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Blockchain</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">/*</span>
+<span class="pl-c">  * This method will loop through every block starting at the second block and </span>
+<span class="pl-c">  * check whether the field `previousHash` equals the hash of the previous block</span>
+<span class="pl-c">  */</span>
+  <span class="pl-en">validateChain</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-k">for</span><span class="pl-kos">(</span><span class="pl-k">let</span> <span class="pl-s1">i</span> <span class="pl-c1">=</span> <span class="pl-c1">1</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">&lt;</span><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">blocks</span><span class="pl-kos">.</span><span class="pl-c1">length</span><span class="pl-kos">;</span> <span class="pl-s1">i</span><span class="pl-c1">++</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+      <span class="pl-k">const</span> <span class="pl-s1">previousBlock</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">blocks</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-c1">-</span><span class="pl-c1">1</span><span class="pl-kos">]</span>
+      <span class="pl-k">const</span> <span class="pl-s1">block</span> <span class="pl-c1">=</span> <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">blocks</span><span class="pl-kos">[</span><span class="pl-s1">i</span><span class="pl-kos">]</span>
+      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">block</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> !== <span class="pl-s1">previousBlock</span><span class="pl-kos">.</span><span class="pl-en">hash</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span> <span class="pl-c">// if these are *not* equal the chain is not valid</span>
+        <span class="pl-k">return</span> <span class="pl-c1">false</span>
+      <span class="pl-kos">}</span>
+    <span class="pl-kos">}</span>
+    <span class="pl-k">return</span> <span class="pl-c1">true</span> <span class="pl-c">// If we loop through all the blocks without returning false then the chain is valid</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <h5>
 <a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>@TODO:</h5>
-<p>How to check validity - explain how hashes link chains and are tamper-proof</p>
 </article></body></html>
