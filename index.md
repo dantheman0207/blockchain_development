@@ -31,16 +31,20 @@ This is how you create an *object*. In JavaScript the technical name for this pa
 Try changing the object so it's called a "Block".
 
 ```JavaScript
-class Thing {}
+class Thing {
+
+}
 ```
 
 ## Adding fields to our block
-When you create an object you can add *fields* to represent the different things an object contains. Each field has a *name* as well as a *type*. We have a block here which contains an object with the name "random". Try changing the name to "data".
+When you create an object you can add *fields* to represent the different things an object contains. Each field has a *name* as well as a *type*. All the fields for our class are described in the `constructor`. We'll see more about this later.
+
+We have a block here which contains an object with the name "random". Try changing the name to "data".
 
 ```JavaScript
 class Block {
   constructor() {
-    this.random = ""
+    this.random = []
   }
 }
 ```
@@ -290,7 +294,7 @@ class Block {
 
 In the screencast you will see me using google. I do this on purpose. Google should be the first resource you try. Just type in your question and add "JavaScript nodejs" to the end.
 
-When I run into problems or have a "bug", I use `console.log` to print the output of my program to the terminal. This lets you see what is happening inside of your program. It can be a really valuable way of finding out what's going wrong. In the screencast I found out that my hash wasn't changing when I changed the nonce. When I changed the way I created the hash, it started changing. Turns out I needed to use `JSON.stringify(this)` instead of `this.toString()`. This is just a different way of making a block into a string which can then be hashed.
+When I run into problems or have a "bug", I use `console.log` to print the output of my program to the terminal. This lets you see what is happening inside of your program. It can be a really valuable way of finding out what's going wrong. In the screencast I found out that my hash wasn't changing when I changed the nonce. When I changed the way I created the hash, it started changing. Turns out I needed to use `JSON.stringify(this)` instead of `this.toString()`. This is just a different way of making a string from our `Block`.
 
 ## Validate our chain
 [Screencast](https://youtu.be/7rri7ZgLLqw)
@@ -358,7 +362,13 @@ class Block() {
 }
 ```
 
-##### @TODO: 
+## @TODO: 
+Create a wallet class: public key as address and private key, with passphrase
 
+Pass wallet address as miner address to blockchain
 
+Sign hash of transactions with sender's wallet
 
+Verify signature of transaction
+
+Add `getAccountBalance` to blockchain
