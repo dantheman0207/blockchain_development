@@ -323,7 +323,21 @@ class Blockchain() {
   }
 }
 ```
+## Storing transactions
+[Screencast](https://youtu.be/xPso9KoAKFI)
 
+Bitcoin and other cryptocurrencies use their blockchain to store transactions. This lets users send and recieve cryptocurrency. Let's write some code to define a transaction. Transactions will look like this:
+
+```JavaScript
+class Transaction {
+  constructor(sender, receiver, amount) {
+    this.sender = sender
+    this.receiver = receiver
+    this.amount = amount
+  }
+}
+```
+We will also add a function to our blockchain for storing transactions.
 
 ##### @TODO: 
 
