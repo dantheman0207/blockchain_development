@@ -986,7 +986,7 @@ When we want to do something repeatedly in JavaScript we can use a <code>while</
 <h2>
 <a id="user-content-storing-transactions" class="anchor" href="#storing-transactions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Storing transactions</h2>
 <p><a href="https://youtu.be/xPso9KoAKFI" rel="nofollow">Screencast</a></p>
-<p>Bitcoin and other cryptocurrencies use their blockchain to store transactions. This lets users send and recieve cryptocurrency. Let's write some code to define a transaction. Transactions will look like this:</p>
+<p>Bitcoin and other cryptocurrencies use their blockchain to store transactions. This lets users send and recieve cryptocurrency. Let's write some code to define a transaction.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Transaction</span> <span class="pl-kos">{</span>
   <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">sender</span><span class="pl-kos">,</span> <span class="pl-s1">receiver</span><span class="pl-kos">,</span> <span class="pl-s1">amount</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
     <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">sender</span> <span class="pl-c1">=</span> <span class="pl-s1">sender</span>
@@ -995,6 +995,19 @@ When we want to do something repeatedly in JavaScript we can use a <code>while</
   <span class="pl-kos">}</span>
 <span class="pl-kos">}</span></pre></div>
 <p>We will also add a function to our blockchain for storing transactions.</p>
+<h2>
+<a id="user-content-mining-a-block-with-transactions" class="anchor" href="#mining-a-block-with-transactions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mining a block with transactions</h2>
+<p><a href="https://youtu.be/9bcpyf_zP9g" rel="nofollow">Screencast</a>
+We will add a function to our <code>Block</code> that allows us to store transactions in the data field.</p>
+<p>We will also add a function to our <code>Blockchain</code> class that lets us mine the next block once we have enough transactions to fill a block. We rename the field <code>transactions</code> to be called <code>pendingTransactions</code>. When we right click then select "Rename Symbol", it renames the field everywhere in the code that it is used. So we only have to type the new field name once.</p>
+<p>When we mine a block, the miner gets a reward. This incentivizes miners to work hard. This reward is given by creating a transaction with no 'from' address whenever we mine a new block.</p>
+<p>In the video I make a mistake. I forget to put the argument <code>numberZeroes</code> when I call <code>block.mine()</code>. In order to find my mistake I put <code>console.log</code> in several spots until I can find where my code is stuck. This is a good way to solve problems in your own code. Eventually I realize I forgot to include the argument. I change the <code>mine()</code> function so that the argument has a default value. In JavaScript that looks like this:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-c">// This function has an argument `numberZeroes` with a default value of 2</span>
+  <span class="pl-en">mine</span><span class="pl-kos">(</span>numberZeroes <span class="pl-c1">=</span> <span class="pl-c1">2</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <h5>
 <a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>@TODO:</h5>
 </article></body></html>

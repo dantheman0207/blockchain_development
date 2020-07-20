@@ -326,7 +326,7 @@ class Blockchain() {
 ## Storing transactions
 [Screencast](https://youtu.be/xPso9KoAKFI)
 
-Bitcoin and other cryptocurrencies use their blockchain to store transactions. This lets users send and recieve cryptocurrency. Let's write some code to define a transaction. Transactions will look like this:
+Bitcoin and other cryptocurrencies use their blockchain to store transactions. This lets users send and recieve cryptocurrency. Let's write some code to define a transaction. 
 
 ```JavaScript
 class Transaction {
@@ -338,6 +338,25 @@ class Transaction {
 }
 ```
 We will also add a function to our blockchain for storing transactions.
+
+## Mining a block with transactions
+[Screencast](https://youtu.be/9bcpyf_zP9g)
+We will add a function to our `Block` that allows us to store transactions in the data field.
+
+We will also add a function to our `Blockchain` class that lets us mine the next block once we have enough transactions to fill a block. We rename the field `transactions` to be called `pendingTransactions`. When we right click then select "Rename Symbol", it renames the field everywhere in the code that it is used. So we only have to type the new field name once.
+
+When we mine a block, the miner gets a reward. This incentivizes miners to work hard. This reward is given by creating a transaction with no 'from' address whenever we mine a new block. 
+
+In the video I make a mistake. I forget to put the argument `numberZeroes` when I call `block.mine()`. In order to find my mistake I put `console.log` in several spots until I can find where my code is stuck. This is a good way to solve problems in your own code. Eventually I realize I forgot to include the argument. I change the `mine()` function so that the argument has a default value. In JavaScript that looks like this:
+
+```JavaScript
+class Block() {
+  // This function has an argument `numberZeroes` with a default value of 2
+  mine(numberZeroes = 2) {
+
+  }
+}
+```
 
 ##### @TODO: 
 
