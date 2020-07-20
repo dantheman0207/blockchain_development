@@ -8,7 +8,7 @@ const myWallet = new Wallet(passphrase)
 const myAddress = myWallet.address
 const privateKey = myWallet.privateKey
 
-const coin = new Blockchain(myWallet)
+const coin = new Blockchain(myAddress)
 
 coin.createGenesisBlock()
 const genesisBlock = coin.getLastBlock()
