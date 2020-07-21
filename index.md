@@ -159,7 +159,7 @@ newBlock() {
 }
 ```
 ### Edit a block
-How about a function that changes our existing block? First we define the function name. This function does an operation on an existing object, so we define function inside of our object. Then we can make changes to the object. When we want to use this function we can write `ourBlock.changeNonce(10)` to change the nonce of `ourBlock` to 10.
+How about a function that changes our existing block? First we define the function name. This function does an operation on an existing object, so we define it inside of our class. Then we can make changes to the object. When we want to use this function we can write `ourBlock.changeNonce(10)` to change the nonce of `ourBlock` to 10.
 
 ```JavaScript
 class Block {
@@ -251,7 +251,7 @@ const { Block } = require('./block')
 ```
 
 ## Add a block to the chain
-[Screencast](https://youtu.be/acJQ6MQIqkQ)
+[Screencast](https://youtu.be/sUCtQAKgKA8)
 
 First we will add a function that calculates the hash of a block.
 Then we will create a new block and link it to the hash of our genesis block.
@@ -271,9 +271,17 @@ class Blockchain {
 ```
 
 ## Mine blocks
-[Screencast](https://youtu.be/YNyHPpdh0Kc)
+[Screencast](https://youtu.be/auF1sM5R1x0)
 
-First we will add a *nonce* to our block.
+First we will add a *nonce* to our block. We do this by adding a field in our `constructor`. The code for that is below:
+
+```JavaScript
+class Block {
+  constructor() {
+    this.nonce = 0
+  }
+}
+```
 
 Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
 When we want to do something repeatedly in JavaScript we can use a `while` loop. The code below loops until the hash starts with '00'. Every time it loops it increments the nonce by one.

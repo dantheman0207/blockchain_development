@@ -865,7 +865,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <span class="pl-kos">}</span></pre></div>
 <h3>
 <a id="user-content-edit-a-block" class="anchor" href="#edit-a-block" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Edit a block</h3>
-<p>How about a function that changes our existing block? First we define the function name. This function does an operation on an existing object, so we define function inside of our object. Then we can make changes to the object. When we want to use this function we can write <code>ourBlock.changeNonce(10)</code> to change the nonce of <code>ourBlock</code> to 10.</p>
+<p>How about a function that changes our existing block? First we define the function name. This function does an operation on an existing object, so we define it inside of our class. Then we can make changes to the object. When we want to use this function we can write <code>ourBlock.changeNonce(10)</code> to change the nonce of <code>ourBlock</code> to 10.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
     <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-s1">previousHash</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
         <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">previousHash</span> <span class="pl-c1">=</span> <span class="pl-s1">previousHash</span>
@@ -932,7 +932,7 @@ On <a href="https://emn178.github.io/online-tools/sha256.html" rel="nofollow">th
 <div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-kos">{</span> Block <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-en">require</span><span class="pl-kos">(</span><span class="pl-s">'./block'</span><span class="pl-kos">)</span></pre></div>
 <h2>
 <a id="user-content-add-a-block-to-the-chain" class="anchor" href="#add-a-block-to-the-chain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add a block to the chain</h2>
-<p><a href="https://youtu.be/acJQ6MQIqkQ" rel="nofollow">Screencast</a></p>
+<p><a href="https://youtu.be/sUCtQAKgKA8" rel="nofollow">Screencast</a></p>
 <p>First we will add a function that calculates the hash of a block.
 Then we will create a new block and link it to the hash of our genesis block.</p>
 <p>We will create a function called <code>addBlock</code> in the <code>blockchain.js</code> file.</p>
@@ -946,8 +946,13 @@ Then we will create a new block and link it to the hash of our genesis block.</p
 <span class="pl-kos">}</span></pre></div>
 <h2>
 <a id="user-content-mine-blocks" class="anchor" href="#mine-blocks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mine blocks</h2>
-<p><a href="https://youtu.be/YNyHPpdh0Kc" rel="nofollow">Screencast</a></p>
-<p>First we will add a <em>nonce</em> to our block.</p>
+<p><a href="https://youtu.be/auF1sM5R1x0" rel="nofollow">Screencast</a></p>
+<p>First we will add a <em>nonce</em> to our block. We do this by adding a field in our <code>constructor</code>. The code for that is below:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
+  <span class="pl-en">constructor</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-c1">nonce</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+  <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <p>Now we can 'mine' a block by changing the nonce repeatedly until the hash of our block starts with '00'.
 When we want to do something repeatedly in JavaScript we can use a <code>while</code> loop. The code below loops until the hash starts with '00'. Every time it loops it increments the nonce by one.</p>
 <div class="highlight highlight-source-js"><pre><span class="pl-k">class</span> <span class="pl-v">Block</span> <span class="pl-kos">{</span>
