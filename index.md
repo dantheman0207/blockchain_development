@@ -300,9 +300,7 @@ class Block {
 ```
 
 
-In the screencast you will see me using google. I do this on purpose. Google should be the first resource you try. Just type in your question and add "JavaScript nodejs" to the end.
-
-When I run into problems or have a "bug", I use `console.log` to print the output of my program to the terminal. This lets you see what is happening inside of your program. It can be a really valuable way of finding out what's going wrong. In the screencast I found out that my hash wasn't changing when I changed the nonce. When I changed the way I created the hash, it started changing. Turns out I needed to use `JSON.stringify(this)` instead of `this.toString()`. This is just a different way of making a string from our `Block`.
+If you're stuck, Google should be the one of the first resources you try. Just type in your question and add "JavaScript NodeJS" to the end.
 
 ## Validate our chain
 [Screencast](https://youtu.be/7rri7ZgLLqw)
